@@ -1,9 +1,6 @@
-//import './style.css';
+import './style.css';
+import { Project, List } from './logic';
 
 
-
-Player1 = Project('read',[])
-list1 = List('buy house','save money', '23/6/9', 'low')
-Player1.list.push(list1)
-
-console.log(Player1.list)
+const p = Project('My first Project', []);
+document.querySelector('h1').textContent = p.name;
