@@ -2,6 +2,41 @@ a{
     color: black
 }
 
-body{
-    background-color: blueviolet;
+.display{
+    display:block;
+}
+
+.no-display{
+    display:none;
+}
+
+.btn-primary{
+   color: yellow;
+}
+
+.jumbo{
+    background-color: blue;
+    font-size: 46px;
+    color: yellow;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 20px;
+}
+
+.start{
+    font-family: cursive;
+    font-size: 26px;
+}
+
+.add-proj{
+    width:20%;
+    margin:10px;
+}
+
+.to-do{
+    width:30%;
+    background-color: yellow;
+}
+
+.list-body{
+    display:flex;
 }
