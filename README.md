@@ -4,7 +4,7 @@ This project is an implementation of TO-DO-LIST from the Odin Project.
 * A user can add and delete projects at will
 * A user can decide what project to add his todo lists to
 * A user can edit and delete todo lists from a project
-* If all projects are deleted,the default project returns
+* If all projects are deleted,the default project returns so you never have an empty list
 
 ## PROGRAMMING LANGUAGE
 * Vanilla Javascript is employed.
