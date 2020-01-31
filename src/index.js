@@ -198,7 +198,6 @@ const showtodos = (a, item, index) => {
     delButton.textContent = 'DELETE PROJECT';
     delButton.classList.add('gridder');
     delButton.id = index;
-    delItem(delButton);
     col3.appendChild(delButton);
     col3.appendChild(addButton);
     addButton.textContent = 'ADD TODO';
