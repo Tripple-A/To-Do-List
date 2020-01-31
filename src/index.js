@@ -18,33 +18,14 @@ const addForm = document.querySelector('.todo-form');
 const check = document.querySelector('.check');
 const { todoForm } = document.forms;
 
-const appendLists = (item) => {
-  const p4 = document.createElement('p');
-  p4.textContent = item.name;
-  p4.classList.add('grids');
-  p4.classList.add('bolden');
-  col4.appendChild(p4);
-  item.list.forEach((listed, index) => {
-    const p1 = document.createElement('div');
-    const p2 = document.createElement('div');
-    const p3 = document.createElement('div');
-    const p5 = document.createElement('div');
-    p1.classList.add('grids');
-    p2.classList.add('grids');
-    p3.classList.add('grids');
-    p1.classList.add('col-sm-3');
-    p2.classList.add('col-sm-3');
-    p3.classList.add('col-sm-3');
-    p1.textContent = listed.title;
-    p2.textContent = listed.dueDate;
-    p3.textContent = listed.priority;
-    p5.textContent = listed.description;
-    p5.classList.add('grids');
-    p5.classList.add('col-sm-12');
-    check.appendChild(p1);
-    check.appendChild(p2);
-    check.appendChild(p3);
-    check.appendChild(p5);
+const classList = (btn) => {
+  btn.classList.add('btn');
+  btn.classList.add('btn-primary');
+};
+
+const showDetails = (a, p5) => {
+  a.addEventListener('click', () => {
+    p5.classList.remove('no-display');
   });
 };
 
@@ -52,22 +33,70 @@ const emptyGrid = () => {
   document.querySelectorAll('.grids').forEach((grid) => grid.parentNode.removeChild(grid));
 };
 
+const viewDetails = (p, item, list, index) => {
+  const div1 = document.createElement('div');
+  const btn1 = document.createElement('button');
+  const btn2 = document.createElement('button');
+  classList(btn1);
+  classList(btn2);
+  btn1.textContent = 'EDIT TODO';
+  btn2.textContent = 'DELETE TODO';
+  div1.innerHTML = 'Description:';
+  div1.innerHTML += list.description;
+  btn2.addEventListener('click', () => {
+    item.list.splice(index, 1);
+    emptyGrid();
+    appendLists(item);
+  });
+  p.appendChild(div1);
+  p.appendChild(btn1);
+  p.appendChild(btn2);
+};
+
+const appendLists = (item) => {
+  const p4 = document.createElement('p');
+  p4.textContent = item.name;
+  p4.classList.add('grids');
+  p4.classList.add('bolden');
+  col4.appendChild(p4);
+  item.list.forEach((listed, index) => {
+    const p1 = document.createElement('a');
+    const p2 = document.createElement('div');
+    const p3 = document.createElement('div');
+    const p5 = document.createElement('div');
+    showDetails(p1, p5);
+    p1.href = '#';
+    p5.classList.add(index);
+    p1.classList.add('grids');
+    p2.classList.add('grids');
+    p3.classList.add('grids');
+    p1.classList.add('col-sm-4');
+    p2.classList.add('col-sm-4');
+    p3.classList.add('col-sm-4');
+    p1.textContent = listed.title;
+    p2.textContent = listed.dueDate;
+    p3.textContent = listed.priority;
+    p5.classList.add('grids');
+    p5.classList.add('col-sm-12');
+    viewDetails(p5, item, listed, index);
+    p5.classList.add('no-display');
+    check.appendChild(p1);
+    check.appendChild(p2);
+    check.appendChild(p3);
+    check.appendChild(p5);
+  });
+};
+
+
 const clearForm = () => {
   todoForm.title.value = '';
   todoForm.description.value = '';
   todoForm.date.value = '';
-  todoForm.priority.value = '';
 };
 
 const clearList = () => {
   document.querySelectorAll('.dispensable').forEach((grid) => grid.parentNode.removeChild(grid));
 };
-
-const classList = (btn) => {
-  btn.classList.add('btn');
-  btn.classList.add('btn-primary');
-};
-
 
 const appendTodo = (item) => {
   document.querySelectorAll('.do-without').forEach((grid) => grid.parentNode.removeChild(grid));
@@ -163,8 +192,6 @@ function newProject() {
 
 
 const p = Project('My first Project', []);
-const t = List('hey', 'description', '23-45-67', 'low');
-Move(t, p.list);
 Move(p, mylist);
 showList();
 newProject();
