@@ -10,4 +10,4 @@ This project is an implementation of TO-DO-LIST from the Odin Project.
 * ES6 ,factories and modules are used.
 
 ## ADD-ONS
-* Webpack is employes.
+* Webpack is employed.
