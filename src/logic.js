@@ -1,4 +1,5 @@
 const { todoForm } = document.forms;
+let mylist;
 
 const Project = (name, list) => ({ name, list });
 
@@ -23,6 +24,10 @@ const saveForm = (listed) => {
   listed.priority = todoForm.priority.value;
 };
 
+const store = () => {
+  localStorage.setItem('savedData', JSON.stringify(mylist));
+};
+
 export {
-  Project, List, Move, createTodo, saveForm,
+  Project, List, Move, createTodo, saveForm, store,
 };
