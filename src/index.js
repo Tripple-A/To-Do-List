@@ -40,7 +40,7 @@ const saveForm = (listed) => {
   listed.priority = todoForm.priority.value;
 };
 
-const editForm = (btn, listed, item) => {
+const editForm = (btn, listed) => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.do-without').forEach((grid) => grid.parentNode.removeChild(grid));
     addForm.classList.remove('no-display');
@@ -57,8 +57,7 @@ const editForm = (btn, listed, item) => {
       document.querySelector('.do-without').classList.add('no-display');
       saveForm(listed);
       addForm.classList.add('no-display');
-      emptyGrid();
-      appendLists(item);
+      col2.classList.add('no-display');
     });
   });
 };
@@ -69,15 +68,14 @@ const viewDetails = (p, item, list, index) => {
   const btn2 = document.createElement('button');
   classList(btn1);
   classList(btn2);
-  editForm(btn1, list, item);
+  editForm(btn1, list);
   btn1.textContent = 'EDIT TODO';
   btn2.textContent = 'DELETE TODO';
   div1.innerHTML = 'Description:';
   div1.innerHTML += list.description;
   btn2.addEventListener('click', () => {
     item.list.splice(index, 1);
-    emptyGrid();
-    appendLists(item);
+    col2.classList.add('no-display');
   });
   p.appendChild(div1);
   p.appendChild(btn1);
@@ -150,21 +148,20 @@ const delItem = (btn) => {
   btn.addEventListener('click', () => {
     const num = parseInt(btn.id, 10);
     mylist.splice(num, 1);
-    showList();
     col2.classList.add('no-display');
   });
 };
 
 
 const showtodos = (a, item, index) => {
+  const addButton = document.createElement('button');
+  const delButton = document.createElement('button');
   a.addEventListener('click', () => {
     document.querySelectorAll('.gridder').forEach((grid) => grid.parentNode.removeChild(grid));
     document.querySelector('.todo-form').classList.add('no-display');
     emptyGrid();
     appendLists(item);
     col2.classList.remove('no-display');
-    const addButton = document.createElement('button');
-    const delButton = document.createElement('button');
     delButton.textContent = 'DELETE PROJECT';
     delButton.classList.add('gridder');
     delButton.id = index;
@@ -181,6 +178,7 @@ const showtodos = (a, item, index) => {
       appendTodo(item);
     });
   });
+  return delButton;
 };
 
 
@@ -189,7 +187,9 @@ const showList = () => {
   mylist.forEach((item, index) => {
     const li = document.createElement('li');
     const a = document.createElement('a');
-    showtodos(a, item, index);
+    const del = showtodos(a, item, index);
+    delItem(del);
+    del.onclick = showList;
     a.textContent = item.name;
     a.href = '#';
     li.classList.add('dispensable');
