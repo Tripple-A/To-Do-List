@@ -3,7 +3,7 @@ import {
   Project, Move, createTodo,
 } from './logic';
 
-const mylist = [];
+let mylist;
 const addProject = document.getElementById('add-project');
 const projectList = document.querySelector('.project-list');
 const newProj = document.querySelector('.add-proj');
@@ -17,6 +17,10 @@ const removeForm = document.querySelector('.remove-form');
 const addForm = document.querySelector('.todo-form');
 const check = document.querySelector('.check');
 const { todoForm } = document.forms;
+
+const store = () => {
+  localStorage.setItem('savedData', JSON.stringify(mylist));
+};
 
 const checkName = () => {
   if (input.value === '') {
@@ -78,6 +82,7 @@ const editForm = (btn, listed) => {
     editTodo.addEventListener('click', () => {
       document.querySelector('.do-without').classList.add('no-display');
       saveForm(listed);
+      store();
       addForm.classList.add('no-display');
       col2.classList.add('no-display');
     });
@@ -97,6 +102,7 @@ const viewDetails = (p, item, list, index) => {
   div1.innerHTML += list.description;
   btn2.addEventListener('click', () => {
     item.list.splice(index, 1);
+    store();
     col2.classList.add('no-display');
   });
   p.appendChild(div1);
@@ -160,6 +166,7 @@ const appendTodo = (item) => {
     if (checkForm()) {
       const newtodo = createTodo();
       Move(newtodo, item.list);
+      store();
       emptyGrid();
       appendLists(item);
       clearForm();
@@ -173,6 +180,7 @@ const delItem = (btn) => {
   btn.addEventListener('click', () => {
     const num = parseInt(btn.id, 10);
     mylist.splice(num, 1);
+    store();
     col2.classList.add('no-display');
   });
 };
@@ -234,6 +242,7 @@ function newProject() {
     if (checkName()) {
       const newAdded = Project(input.value, []);
       Move(newAdded, mylist);
+      store();
       newProj.classList.add('no-display');
       input.value = '';
       showList();
@@ -250,8 +259,16 @@ function newProject() {
   });
 }
 
-
-const p = Project('My first Project', []);
-Move(p, mylist);
+const previous = () => {
+  if (localStorage.savedData.length === 0) {
+    mylist = [];
+    const p = Project('My first Project', []);
+    Move(p, mylist);
+    store();
+  } else {
+    mylist = JSON.parse(localStorage.getItem('savedData'));
+  }
+};
+previous();
 showList();
 newProject();
