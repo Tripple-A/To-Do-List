@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  Project, List, Move, createTodo,
+  Project, Move, createTodo,
 } from './logic';
 
 const mylist = [];
@@ -17,7 +17,6 @@ const removeForm = document.querySelector('.remove-form');
 const addForm = document.querySelector('.todo-form');
 const check = document.querySelector('.check');
 const { todoForm } = document.forms;
-const all = document.querySelectorAll('do-without');
 
 const classList = (btn) => {
   btn.classList.add('btn');

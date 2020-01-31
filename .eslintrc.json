@@ -10,6 +10,7 @@
     },
     "extends": ["airbnb-base"],
     "rules": {
+      "no-use-before-define": ["error", { "functions": false, "classes": true }],
       "no-shadow": "off",
       "no-param-reassign": "off",
       "eol-last": "off",
