@@ -73,7 +73,16 @@ const appendTodo = (item) => {
   });
 };
 
-const showtodos = (a, item) => {
+const delItem = (btn) => {
+  btn.addEventListener('click', () => {
+    const num = parseInt(btn.id, 10);
+    mylist.splice(num, 1);
+    showList();
+    col2.classList.add('no-display');
+  });
+};
+
+const showtodos = (a, item, index) => {
   a.addEventListener('click', () => {
     document.querySelectorAll('.gridder').forEach((grid) => grid.parentNode.removeChild(grid));
     document.querySelector('.todo-form').classList.add('no-display');
@@ -81,10 +90,16 @@ const showtodos = (a, item) => {
     appendLists(item);
     col2.classList.remove('no-display');
     const addButton = document.createElement('button');
+    const delButton = document.createElement('button');
+    delButton.textContent = 'DELETE PROJECT';
+    delButton.classList.add('gridder');
+    delButton.id = index;
+    delItem(delButton);
+    col3.appendChild(delButton);
+    col3.appendChild(addButton);
     addButton.textContent = 'ADD TODO';
     addButton.classList.add('gridder');
     addButton.classList.add('btn-primary');
-    col3.appendChild(addButton);
     addButton.addEventListener('click', () => {
       document.querySelector('.todo-form').classList.remove('no-display');
       appendTodo(item);
@@ -95,16 +110,15 @@ const showtodos = (a, item) => {
 
 const showList = () => {
   clearList();
-  mylist.forEach((item) => {
+  mylist.forEach((item, index) => {
     const li = document.createElement('li');
     const a = document.createElement('a');
-    showtodos(a, item);
+    showtodos(a, item, index);
     a.textContent = item.name;
     a.href = '#';
     li.classList.add('dispensable');
     li.appendChild(a);
     projectList.appendChild(li);
-    console.log(mylist);
   });
 };
 
