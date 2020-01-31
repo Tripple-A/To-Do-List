@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  Project, Move, createTodo,
+  Project, Move, createTodo, saveForm,
 } from './logic';
 
 let mylist;
@@ -57,13 +57,6 @@ const showDetails = (a, p5) => {
 
 const emptyGrid = () => {
   document.querySelectorAll('.grids').forEach((grid) => grid.parentNode.removeChild(grid));
-};
-
-const saveForm = (listed) => {
-  listed.title = todoForm.title.value;
-  listed.description = todoForm.description.value;
-  listed.dueDate = todoForm.date.value;
-  listed.priority = todoForm.priority.value;
 };
 
 const editForm = (btn, listed) => {

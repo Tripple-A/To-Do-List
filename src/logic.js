@@ -16,6 +16,13 @@ const createTodo = () => {
   return List(title, description, dueDate, priority);
 };
 
+const saveForm = (listed) => {
+  listed.title = todoForm.title.value;
+  listed.description = todoForm.description.value;
+  listed.dueDate = todoForm.date.value;
+  listed.priority = todoForm.priority.value;
+};
+
 export {
-  Project, List, Move, createTodo,
+  Project, List, Move, createTodo, saveForm,
 };
