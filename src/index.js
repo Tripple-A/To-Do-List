@@ -13,11 +13,9 @@ const cancel = document.querySelector('.cancel');
 const col2 = document.querySelector('.col2');
 const col3 = document.querySelector('.col3');
 const col4 = document.querySelector('.col4');
-const cola = document.querySelector('.cola');
-const colb = document.querySelector('.colb');
-const colc = document.querySelector('.colc');
 const removeForm = document.querySelector('.remove-form');
 const addForm = document.querySelector('.todo-form');
+const check = document.querySelector('.check');
 const { todoForm } = document.forms;
 
 const appendLists = (item) => {
@@ -26,19 +24,27 @@ const appendLists = (item) => {
   p4.classList.add('grids');
   p4.classList.add('bolden');
   col4.appendChild(p4);
-  item.list.forEach((listed) => {
-    const p1 = document.createElement('p');
-    const p2 = document.createElement('p');
-    const p3 = document.createElement('p');
+  item.list.forEach((listed, index) => {
+    const p1 = document.createElement('div');
+    const p2 = document.createElement('div');
+    const p3 = document.createElement('div');
+    const p5 = document.createElement('div');
     p1.classList.add('grids');
     p2.classList.add('grids');
     p3.classList.add('grids');
+    p1.classList.add('col-sm-3');
+    p2.classList.add('col-sm-3');
+    p3.classList.add('col-sm-3');
     p1.textContent = listed.title;
     p2.textContent = listed.dueDate;
     p3.textContent = listed.priority;
-    cola.appendChild(p1);
-    colb.appendChild(p2);
-    colc.appendChild(p3);
+    p5.textContent = listed.description;
+    p5.classList.add('grids');
+    p5.classList.add('col-sm-12');
+    check.appendChild(p1);
+    check.appendChild(p2);
+    check.appendChild(p3);
+    check.appendChild(p5);
   });
 };
 
@@ -57,9 +63,16 @@ const clearList = () => {
   document.querySelectorAll('.dispensable').forEach((grid) => grid.parentNode.removeChild(grid));
 };
 
+const classList = (btn) => {
+  btn.classList.add('btn');
+  btn.classList.add('btn-primary');
+};
+
+
 const appendTodo = (item) => {
   document.querySelectorAll('.do-without').forEach((grid) => grid.parentNode.removeChild(grid));
   const addTodo = document.createElement('button');
+  classList(addTodo);
   addTodo.classList.add('do-without');
   addTodo.textContent = 'ADD TODO';
   addForm.appendChild(addTodo);
@@ -82,6 +95,7 @@ const delItem = (btn) => {
   });
 };
 
+
 const showtodos = (a, item, index) => {
   a.addEventListener('click', () => {
     document.querySelectorAll('.gridder').forEach((grid) => grid.parentNode.removeChild(grid));
@@ -99,7 +113,8 @@ const showtodos = (a, item, index) => {
     col3.appendChild(addButton);
     addButton.textContent = 'ADD TODO';
     addButton.classList.add('gridder');
-    addButton.classList.add('btn-primary');
+    classList(addButton);
+    classList(delButton);
     addButton.addEventListener('click', () => {
       document.querySelector('.todo-form').classList.remove('no-display');
       appendTodo(item);
