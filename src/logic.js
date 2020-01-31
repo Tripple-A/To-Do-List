@@ -1,3 +1,5 @@
+const { todoForm } = document.forms;
+
 const Project = (name, list) => ({ name, list });
 
 const List = (title, description, dueDate, priority) => ({
@@ -5,11 +7,15 @@ const List = (title, description, dueDate, priority) => ({
 });
 
 const Move = (item, array) => array.push(item);
-const Itemize = (array) => {
-  array.forEach((element) => {
-    return element.name;
-  });
+
+const createTodo = () => {
+  const title = todoForm.title.value;
+  const description = todoForm.description.value;
+  const dueDate = todoForm.date.value;
+  const priority = todoForm.priority.value;
+  return List(title, description, dueDate, priority);
 };
+
 export {
-  Project, List, Move, Itemize,
+  Project, List, Move, createTodo,
 };
