@@ -18,13 +18,22 @@ const addForm = document.querySelector('.todo-form');
 const check = document.querySelector('.check');
 const { todoForm } = document.forms;
 
+const checkName = () => {
+  if (input.value === '') {
+    document.querySelector('.name').classList.remove('no-display');
+  } else {
+    return true;
+  }
+  return false;
+};
+
 const checkForm = () => {
   const title = todoForm.title.value;
   const description = todoForm.description.value;
   const dueDate = todoForm.date.value;
   const priority = todoForm.priority.value;
   if (title === '' || description === '' || dueDate === '' || priority === '') {
-    document.querySelector('.red').classList.remove('no-display');
+    document.querySelector('.form').classList.remove('no-display');
   } else {
     return true;
   }
@@ -222,11 +231,14 @@ function newProject() {
   });
 
   create.addEventListener('click', () => {
-    const newAdded = Project(input.value, []);
-    Move(newAdded, mylist);
-    newProj.classList.add('no-display');
-    input.value = '';
-    showList();
+    if (checkName()) {
+      const newAdded = Project(input.value, []);
+      Move(newAdded, mylist);
+      newProj.classList.add('no-display');
+      input.value = '';
+      showList();
+      document.querySelector('.name').classList.add('no-display');
+    }
   });
 
   addProject.addEventListener('click', () => {
