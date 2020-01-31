@@ -17,6 +17,7 @@ const removeForm = document.querySelector('.remove-form');
 const addForm = document.querySelector('.todo-form');
 const check = document.querySelector('.check');
 const { todoForm } = document.forms;
+const all = document.querySelectorAll('do-without');
 
 const classList = (btn) => {
   btn.classList.add('btn');
@@ -33,12 +34,43 @@ const emptyGrid = () => {
   document.querySelectorAll('.grids').forEach((grid) => grid.parentNode.removeChild(grid));
 };
 
+const saveForm = (listed) => {
+  listed.title = todoForm.title.value;
+  listed.description = todoForm.description.value;
+  listed.dueDate = todoForm.date.value;
+  listed.priority = todoForm.priority.value;
+};
+
+const editForm = (btn, listed, item) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.do-without').forEach((grid) => grid.parentNode.removeChild(grid));
+    addForm.classList.remove('no-display');
+    todoForm.title.value = listed.title;
+    todoForm.description.value = listed.description;
+    todoForm.date.value = listed.dueDate;
+    todoForm.date.priority = listed.priority;
+    const editTodo = document.createElement('button');
+    editTodo.textContent = 'SAVE';
+    editTodo.classList.add('do-without');
+    classList(editTodo);
+    addForm.appendChild(editTodo);
+    editTodo.addEventListener('click', () => {
+      document.querySelector('.do-without').classList.add('no-display');
+      saveForm(listed);
+      addForm.classList.add('no-display');
+      emptyGrid();
+      appendLists(item);
+    });
+  });
+};
+
 const viewDetails = (p, item, list, index) => {
   const div1 = document.createElement('div');
   const btn1 = document.createElement('button');
   const btn2 = document.createElement('button');
   classList(btn1);
   classList(btn2);
+  editForm(btn1, list, item);
   btn1.textContent = 'EDIT TODO';
   btn2.textContent = 'DELETE TODO';
   div1.innerHTML = 'Description:';
@@ -103,7 +135,7 @@ const appendTodo = (item) => {
   const addTodo = document.createElement('button');
   classList(addTodo);
   addTodo.classList.add('do-without');
-  addTodo.textContent = 'ADD TODO';
+  addTodo.textContent = 'CREATE TODO';
   addForm.appendChild(addTodo);
   addTodo.addEventListener('click', () => {
     const newtodo = createTodo();
@@ -145,6 +177,7 @@ const showtodos = (a, item, index) => {
     classList(addButton);
     classList(delButton);
     addButton.addEventListener('click', () => {
+      clearForm();
       document.querySelector('.todo-form').classList.remove('no-display');
       appendTodo(item);
     });
