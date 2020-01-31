@@ -18,6 +18,19 @@ const addForm = document.querySelector('.todo-form');
 const check = document.querySelector('.check');
 const { todoForm } = document.forms;
 
+const checkForm = () => {
+  const title = todoForm.title.value;
+  const description = todoForm.description.value;
+  const dueDate = todoForm.date.value;
+  const priority = todoForm.priority.value;
+  if (title === '' || description === '' || dueDate === '' || priority === '') {
+    document.querySelector('.red').classList.remove('no-display');
+  } else {
+    return true;
+  }
+  return false;
+};
+
 const classList = (btn) => {
   btn.classList.add('btn');
   btn.classList.add('btn-primary');
@@ -135,12 +148,15 @@ const appendTodo = (item) => {
   addTodo.textContent = 'CREATE TODO';
   addForm.appendChild(addTodo);
   addTodo.addEventListener('click', () => {
-    const newtodo = createTodo();
-    Move(newtodo, item.list);
-    emptyGrid();
-    appendLists(item);
-    clearForm();
-    document.querySelector('.todo-form').classList.add('no-display');
+    if (checkForm()) {
+      const newtodo = createTodo();
+      Move(newtodo, item.list);
+      emptyGrid();
+      appendLists(item);
+      clearForm();
+      document.querySelector('.todo-form').classList.add('no-display');
+      document.querySelector('.red').classList.add('no-display');
+    }
   });
 };
 
