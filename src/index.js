@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  Project, Move, createTodo, saveForm, store,
+  Project, Move, createTodo, saveForm, store, edit,
 } from './logic';
 
 let mylist;
@@ -60,10 +60,7 @@ const editForm = (btn, listed) => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.do-without').forEach((grid) => grid.parentNode.removeChild(grid));
     addForm.classList.remove('no-display');
-    todoForm.title.value = listed.title;
-    todoForm.description.value = listed.description;
-    todoForm.date.value = listed.dueDate;
-    todoForm.date.priority = listed.priority;
+    edit(listed);
     const editTodo = document.createElement('button');
     editTodo.textContent = 'SAVE';
     editTodo.classList.add('do-without');

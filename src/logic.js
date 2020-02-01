@@ -24,10 +24,17 @@ const saveForm = (listed) => {
   listed.priority = todoForm.priority.value;
 };
 
+const edit = (listed) => {
+  todoForm.title.value = listed.title;
+  todoForm.description.value = listed.description;
+  todoForm.date.value = listed.dueDate;
+  todoForm.date.priority = listed.priority;
+};
+
 const store = () => {
   localStorage.setItem('savedData', JSON.stringify(mylist));
 };
 
 export {
-  Project, List, Move, createTodo, saveForm, store,
+  Project, List, Move, createTodo, saveForm, store, edit,
 };
