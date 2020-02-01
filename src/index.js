@@ -249,16 +249,22 @@ function newProject() {
   });
 }
 
+const defaultProject = () => {
+  const p = Project('My first Project', []);
+  Move(p, mylist);
+};
+
 const previous = () => {
   if (!localStorage.savedData) {
     store();
   } else {
     mylist = JSON.parse(localStorage.getItem('savedData'));
+    if (mylist.length === 0) {
+      defaultProject();
+      store();
+    }
   }
-  const p = Project('My first Project', []);
-  Move(p, mylist);
-  store();
+  showList();
+  newProject();
 };
 previous();
-showList();
-newProject();
