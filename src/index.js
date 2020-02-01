@@ -3,7 +3,7 @@ import {
   Project, Move, createTodo, saveForm, edit,
 } from './logic';
 
-let mylist = [];
+const mylist = [];
 const addProject = document.getElementById('add-project');
 const projectList = document.querySelector('.project-list');
 const newProj = document.querySelector('.add-proj');
@@ -17,6 +17,7 @@ const removeForm = document.querySelector('.remove-form');
 const addForm = document.querySelector('.todo-form');
 const check = document.querySelector('.check');
 const { todoForm } = document.forms;
+localStorage.setItem('savedData', JSON.stringify(mylist));
 
 const store = () => {
   localStorage.setItem('savedData', JSON.stringify(mylist));
@@ -248,16 +249,8 @@ function newProject() {
   });
 }
 
+const p = Project('My first Project', []);
+Move(p, mylist);
 
-const previous = () => {
-  if (localStorage.savedData === undefined) {
-    const p = Project('My first Project', []);
-    Move(p, mylist);
-    store();
-  } else {
-    mylist = JSON.parse(localStorage.getItem('savedData'));
-  }
-};
-previous();
 showList();
 newProject();
