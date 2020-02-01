@@ -17,7 +17,7 @@ const removeForm = document.querySelector('.remove-form');
 const addForm = document.querySelector('.todo-form');
 const check = document.querySelector('.check');
 const { todoForm } = document.forms;
-localStorage.setItem('savedData', JSON.stringify(mylist));
+
 
 const store = () => {
   localStorage.setItem('savedData', JSON.stringify(mylist));
@@ -250,19 +250,17 @@ function newProject() {
 }
 
 const defaultProject = () => {
+  mylist = [];
   const p = Project('My first Project', []);
   Move(p, mylist);
 };
 
 const previous = () => {
   if (!localStorage.savedData) {
+    defaultProject();
     store();
   } else {
     mylist = JSON.parse(localStorage.getItem('savedData'));
-    if (mylist.length === 0) {
-      defaultProject();
-      store();
-    }
   }
   showList();
   newProject();
