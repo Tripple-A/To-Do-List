@@ -250,7 +250,7 @@ function newProject() {
 
 
 const previous = () => {
-  if (localStorage.savedData === 'undefined' || localStorage.savedData.length <= 2) {
+  if (localStorage.savedData === undefined || localStorage.savedData.length <= 2) {
     mylist = [];
     const p = Project('My first Project', []);
     Move(p, mylist);
