@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  Project, Move, createTodo, saveForm, store, edit,
+  Project, Move, createTodo, saveForm, edit,
 } from './logic';
 
 let mylist;
@@ -18,6 +18,9 @@ const addForm = document.querySelector('.todo-form');
 const check = document.querySelector('.check');
 const { todoForm } = document.forms;
 
+const store = () => {
+  localStorage.setItem('savedData', JSON.stringify(mylist));
+};
 
 const checkName = () => {
   if (input.value === '') {
@@ -245,8 +248,9 @@ function newProject() {
   });
 }
 
+
 const previous = () => {
-  if (localStorage.savedData.length <= 2) {
+  if (localStorage.savedData === 'undefined' || localStorage.savedData.length <= 2) {
     mylist = [];
     const p = Project('My first Project', []);
     Move(p, mylist);
