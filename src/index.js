@@ -3,7 +3,7 @@ import {
   Project, Move, createTodo, saveForm, edit,
 } from './logic';
 
-let mylist;
+let mylist = [];
 const addProject = document.getElementById('add-project');
 const projectList = document.querySelector('.project-list');
 const newProj = document.querySelector('.add-proj');
@@ -250,8 +250,7 @@ function newProject() {
 
 
 const previous = () => {
-  if (localStorage.savedData === undefined || localStorage.savedData.length <= 2) {
-    mylist = [];
+  if (localStorage.savedData === undefined) {
     const p = Project('My first Project', []);
     Move(p, mylist);
     store();
