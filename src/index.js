@@ -261,6 +261,10 @@ const previous = () => {
     store();
   } else {
     mylist = JSON.parse(localStorage.getItem('savedData'));
+    if (mylist.length === 0) {
+      defaultProject();
+      store();
+    }
   }
   showList();
   newProject();
