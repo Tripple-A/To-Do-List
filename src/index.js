@@ -3,7 +3,7 @@ import {
   Project, Move, createTodo, saveForm, edit,
 } from './logic';
 
-const mylist = [];
+let mylist = [];
 const addProject = document.getElementById('add-project');
 const projectList = document.querySelector('.project-list');
 const newProj = document.querySelector('.add-proj');
@@ -249,8 +249,16 @@ function newProject() {
   });
 }
 
-const p = Project('My first Project', []);
-Move(p, mylist);
 
+const previous = () => {
+  if (!localStorage.savedData) {
+    const p = Project('My first Project', []);
+    Move(p, mylist);
+    store();
+  } else {
+    mylist = JSON.parse(localStorage.getItem('savedData'));
+  }
+};
+previous();
 showList();
 newProject();
