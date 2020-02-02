@@ -1,0 +1,58 @@
+a{
+    color: black
+}
+
+.display{
+    display:block;
+}
+
+.no-display{
+    display:none;
+}
+
+.btn-primary{
+   color: yellow;
+}
+
+.jumbo{
+    background-color: blue;
+    font-size: 46px;
+    color: yellow;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    padding: 20px;
+}
+
+.start{
+    font-family: cursive;
+    font-size: 26px;
+}
+
+.add-proj{
+    width:80%;
+    margin:10px;
+}
+
+.projects{
+    height: 600px;
+    padding:20px;
+    background-color:rgb(152, 187, 226);
+}
+
+.to-do{
+    background-color: rgb(152, 187, 226);;
+    text-align: center;
+}
+
+.col2{
+    background-color:rgb(230, 230, 112);
+}
+
+.bolden{
+    font-size: 20px;
+    color: blue;
+    font-weight: bold;
+}
+
+.red{
+    color:red;
+}

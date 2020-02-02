@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>To-Do-List</title>
+</head>
+<body>
+    <div class="jumbo text-center">
+Organize Your Life
+<p class="start"> Don't Start Tomorrow: Set Your Goals Today</p>
+    </div>
+    <div class="list-body container-fluid">
+        <div class="row"> 
+            <div class="projects col-sm-2">
+                <h6 class="no-display red name"> Project Name can not be empty</h6>
+                <button id="add-project" class="btn btn-primary"> Add New Project</button>
+                <form action="" class="add-proj no-display">
+                    <input type="text" placeholder="Type project Name" class="form-control new-project">
+                    <button class="btn btn-primary create" type="submit">Create</button>
+                    <button class="btn btn-primary cancel" type="reset">Cancel</button>
+                </form>
+                <h3> Projects List</h3>
+                <ul class="project-list">
+            
+                </ul>
+            </div>
+            <div class="col-sm-6 col2 no-display">
+                <div class="col3"></div>
+                <div class="col4"></div>
+                <div class="row check">
+                   <div class="col-sm-4 "> <b>Title </b> </div>
+                   <div class="col-sm-4"><b>DueDate </b> </div>
+                   <div class="col-sm-4"><b>Priority </b> </div>
+                   <div class="col-sm-12"></div>
+                   
+                </div>
+            </div>
+            <div class="todo-form col-sm-4 no-display">
+                <form action="" class="to-do" name="todoForm">
+                    <h3 class = "no-display form red">Please fill all properties</h3>
+                    <h4 >ADD NEW TODO </h4> 
+                    <label for="title"> Title </label>
+                    <input type="text" name="title" class="form-control">
+                    <label for="description"> Description </label>
+                    <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
+                    <label for="date"> Due date </label>
+                    <input type="date" name="date" id="date" class="form-control">
+                    <label for="priority"> Priority</label>
+                    <select name="priority" class="form-control">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                      </select>
+                </form>
+                      <button class="btn btn-primary remove-form"> CANCEL </button>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="main.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
