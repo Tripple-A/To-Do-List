@@ -15,4 +15,4 @@ This project is an implementation of TO-DO-LIST from the Odin Project.
 * Webpack is employed.
 * Local Storage is used.
 
-Find the live link [here](https://cdn.statically.io/gh/Tripple-A/To-Do-List/todo-logic/dist/index.html?)
+Find the live link [here](https://cdn.statically.io/gh/Tripple-A/To-Do-List/develop/dist/index.html)
