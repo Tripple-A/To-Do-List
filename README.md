@@ -1,5 +1,6 @@
 # To-Do-List
 This project is an implementation of TO-DO-LIST from the Odin Project.
+View the live demo [here](https://cdn.statically.io/gh/Tripple-A/To-Do-List/develop/dist/index.html)
 ## HIGHLIGHTS
 * A user can add and delete projects at will
 * A user can decide what project to add his todo lists to
@@ -15,4 +16,4 @@ This project is an implementation of TO-DO-LIST from the Odin Project.
 * Webpack is employed.
 * Local Storage is used.
 
-Find the live link [here](https://cdn.statically.io/gh/Tripple-A/To-Do-List/develop/dist/index.html)
+
