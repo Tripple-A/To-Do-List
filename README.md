@@ -38,7 +38,7 @@ This project is an implementation of TO-DO-LIST from the Odin Project.
 
 <!-- LIVE PREVIEW -->
 ## LIVE PREVIEW
-View the live demo [here](https://raw.githack.com/Tripple-A/To-Do-List/develop/dist/index.html)
+View the live demo [here](https://raw.githack.com/Tripple-A/To-Do-List/develop/dist/index.html).
 Below is a screenshot of what it looks like.
 ![Image](/src/proof.png)
 
@@ -82,7 +82,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Contact
-* Abiodun Ajibade - biodun9@gmail.com | [Github Account](https://github.com/Tripple-A)
+* 🇳🇬  Abiodun Ajibade - biodun9@gmail.com | [Github Account](https://github.com/Tripple-A) | [Twitter](https://twitter.com/AbiodunAjibade3) | [Linkedin](https://linkedin.com/in/abiodun-ajibade)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
