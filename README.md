@@ -39,6 +39,9 @@ This project is an implementation of TO-DO-LIST from the Odin Project.
 <!-- LIVE PREVIEW -->
 ## LIVE PREVIEW
 View the live demo [here](https://raw.githack.com/Tripple-A/To-Do-List/develop/dist/index.html)
+Below is a screenshot of what it looks like.
+![Image](/src/proof.png)
+
 
 
 <!-- REQUIRED INSTALLATION -->
